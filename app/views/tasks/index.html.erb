@@ -1,0 +1,14 @@
+
+<h1>My tasks!</h1>
+
+
+<% @tasks.each do |task| %>
+  <p> <%= task.completed ? ("<i class='fa-solid fa-square-check'></i>").html_safe : ("<i class='fa-solid fa-square'></i>").html_safe %>
+  <%= link_to task["title"], task_path(task["id"])%>
+  <%= link_to ("<i class='fa-solid fa-trash-can'></i>").html_safe,
+            task_path(task["id"]),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %> </p>
+<% end %>
+
+<%= link_to ("<i class='fa-solid fa-plus'></i> Add").html_safe, tasks_new_path %>
